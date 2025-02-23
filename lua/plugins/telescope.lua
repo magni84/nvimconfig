@@ -22,10 +22,10 @@ return {
             { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
         },
         keys = {
-            {"<leader>pf", "<cmd>Telescope find_files<cr>", desc = "Find Files"},
-            {"<leader>pg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep"},
-            {"<leader>pb", "<cmd>Telescope buffers<cr>", desc = "Buffers"},
-            {"<leader>ph", "<cmd>Telescope help_tags<cr>", desc = "Help tags"}
+            {"<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files"},
+            {"<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep"},
+            {"<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers"},
+            {"<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags"}
         }
     },
     {

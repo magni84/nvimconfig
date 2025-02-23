@@ -1,13 +1,18 @@
 vim.g.mapleader = " " -- easy to reach leader key
 
 -- Browse files
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Show files"})
+vim.keymap.set("n", "<leader>fv", vim.cmd.Ex, { desc = "Show files"})
 
 -- Remove search highlights with Esc
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Clipboard stuff
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Copy to clipboard"})
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy to clipboard"})
+vim.keymap.set("n", "<leader>p", [["+p]], { desc = "Paste from clipboard"})
 
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
