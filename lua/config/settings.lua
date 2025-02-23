@@ -1,6 +1,7 @@
 -- Terminal
 vim.opt.shell = "/bin/bash"
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.termguicolors= true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
@@ -8,8 +9,17 @@ vim.opt.breakindent = true
 vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 
+-- Python provider
+vim.g.python3_host_prog = "/home/perma852/anaconda3/bin/python3"
+
 -- Colorscheme
 vim.cmd.colorscheme "catppuccin"
+function LineNumberColors()
+    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#51B3EC', bold=true })
+    vim.api.nvim_set_hl(0, 'LineNr', { fg='white', bold=true })
+    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
+end
+LineNumberColors()
 
 -- Indentation
 vim.opt.tabstop = 4
