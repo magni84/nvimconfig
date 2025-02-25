@@ -16,6 +16,7 @@ return {
         config = function()
             require("image").setup({
                 backend = "kitty",            -- Kitty will provide the best experience, but you need a compatible terminal
+                processor = "magick_cli",
                 integrations = {},            -- do whatever you want with image.nvim's integrations
                 max_width = 100,              -- tweak to preference
                 max_height = 12,              -- ^
