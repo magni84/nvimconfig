@@ -10,7 +10,7 @@ vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 
 -- Python provider
-vim.g.python3_host_prog = "/home/perma852/anaconda3/bin/python3"
+vim.g.python3_host_prog = "/home/perma852/anaconda3/envs/nvim/bin/python3"
 
 -- Colorscheme
 vim.cmd.colorscheme "catppuccin"
@@ -27,7 +27,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
-
+vim.opt.showtabline = 1
 -- Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

@@ -1,0 +1,54 @@
+{
+    "pycode": {
+        "prefix": [
+            "pyc"
+        ],
+        "body": [
+            "```{python} ",
+            "$1",
+            "```"
+        ]
+    },
+    "rcode": {
+        "prefix": [
+            "rco"
+        ],
+        "body": [
+            "```{r} ",
+            "$1",
+            "```"
+        ]
+    },
+    "yaml header": {
+        "body": [
+            "---",
+            "title: $1",
+            "format: $2",
+            "---"
+        ],
+        "description": "Add minimal yaml header",
+        "prefix": "yml"
+    },
+    "quarto header": {
+        "prefix": [
+            "qheader"
+        ],
+        "body": [
+            "---",
+            "title: \"$1\"",
+            "format: ",
+            "    html:",
+            "       code-fold: true",
+            "jupyter: $2",
+            "---"
+        ]
+    },
+    "reset kernel": {
+        "prefix": [
+            "kernelreset"
+        ],
+        "body": [
+            "%reset -f"
+        ]
+    }
+}

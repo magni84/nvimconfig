@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "ltex", "texlab", "pyright" },
+                ensure_installed = { "lua_ls", "ltex", "texlab", "pyright", "jsonls" },
             })
         end,
     },
@@ -18,7 +18,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("mason-null-ls").setup({
-                ensure_installed = { "stylua", "black" },
+                ensure_installed = { "stylua", "black", "prettier" },
             })
         end,
     },
@@ -38,6 +38,9 @@ return {
             lspconfig.pyright.setup({
                 capabilities = capabilities
             })
+            lspconfig.jsonls.setup({
+                capabilities = capabilities
+            })
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Lsp Hover" })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Lsp Go to definition" })
             vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
@@ -50,7 +53,8 @@ return {
             null_ls.setup({
                 sources = {
                     null_ls.builtins.formatting.stylua,
-                    null_ls.builtins.formatting.black
+                    null_ls.builtins.formatting.black,
+                    null_ls.builtins.formatting.prettier
                 },
             })
             vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format buffer" })
