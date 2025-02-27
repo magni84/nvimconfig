@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "ltex", "texlab", "pyright", "jsonls" },
+                ensure_installed = { "lua_ls", "ltex", "texlab", "pyright", "jsonls", "marksman" },
             })
         end,
     },
@@ -31,7 +31,13 @@ return {
             lspconfig.lua_ls.setup({
                 capabilities = cpabilities
             })
-            lspconfig.ltex.setup({})
+            lspconfig.marksman.setup({
+                capabilities = capabilities,
+                filetypes = {'markdown', 'quarto'},
+            })
+            lspconfig.ltex.setup({
+                capabilities = capabilities,
+            })
             lspconfig.texlab.setup({
                 capabilities = capabilities,
             })
