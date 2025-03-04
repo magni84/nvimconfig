@@ -65,11 +65,55 @@ return {
 			vim.keymap.set("n", "<leader>ra", runner.run_above, { desc = "run cell and above", silent = true })
 			vim.keymap.set("n", "<leader>rA", runner.run_all, { desc = "run all cells", silent = true })
 			vim.keymap.set("n", "<leader>rl", runner.run_line, { desc = "run line", silent = true })
-			vim.keymap.set("n", "<leader>rk", ":MoltenEvaluateArgument %reset -f<CR>", { desc = "reset kernel", silent = true })
+			vim.keymap.set(
+				"n",
+				"<leader>rk",
+				":MoltenEvaluateArgument %reset -f<CR>",
+				{ desc = "reset kernel", silent = true }
+			)
 			vim.keymap.set("v", "<leader>r", runner.run_range, { desc = "run visual range", silent = true })
 			vim.keymap.set("n", "<leader>RA", function()
 				runner.run_all(true)
 			end, { desc = "run all cells of all languages", silent = true })
+
+			local wk = require("which-key")
+			local is_code_chunk = function()
+				local current, _ = require("otter.keeper").get_current_language_context()
+				if current then
+					return true
+				else
+					return false
+				end
+			end
+
+			--- Insert code chunk of given language
+			--- Splits current chunk if already within a chunk
+			--- @param lang string
+			local insert_code_chunk = function(lang)
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", true)
+				local keys
+				if is_code_chunk() then
+					keys = [[o```<cr><cr>```{]] .. lang .. [[}<esc>o]]
+				else
+					keys = [[o```{]] .. lang .. [[}<cr>```<esc>O]]
+				end
+				keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
+				vim.api.nvim_feedkeys(keys, "n", false)
+			end
+
+			local insert_py_chunk = function()
+				insert_code_chunk("python")
+			end
+			wk.add({
+				{ "<C-i>", insert_py_chunk, desc = "python code chunk" },
+			}, { mode = "n", silent = true })
+			-- insert mode
+			wk.add({
+				{
+					mode = { "i" },
+					{ "<C-i>", insert_py_chunk, desc = "python code chunk" },
+				},
+			}, { mode = "i" })
 		end,
 	},
 }
