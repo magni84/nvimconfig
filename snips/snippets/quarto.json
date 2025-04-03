@@ -9,46 +9,40 @@
             "```"
         ]
     },
-    "rcode": {
+    "imports": {
         "prefix": [
-            "rco"
+            "imports"
         ],
         "body": [
-            "```{r} ",
-            "$1",
+            "```{python} ",
+            "import numpy as np",
+            "from numpy.linalg import inv, pinv, det, eig, norm",
+            "import matplotlib.pyplot as plt",
+            "import cvxpy as cp",
+            "from scipy.linalg import sqrtm",
             "```"
         ]
-    },
-    "yaml header": {
-        "body": [
-            "---",
-            "title: $1",
-            "format: $2",
-            "---"
-        ],
-        "description": "Add minimal yaml header",
-        "prefix": "yml"
-    },
-    "quarto header": {
-        "prefix": [
-            "qheader"
-        ],
-        "body": [
-            "---",
-            "title: \"$1\"",
-            "format: ",
-            "    html:",
-            "       code-fold: true",
-            "jupyter: $2",
-            "---"
-        ]
-    },
-    "reset kernel": {
-        "prefix": [
-            "kernelreset"
-        ],
-        "body": [
-            "%reset -f"
-        ]
+        },
+        "quarto header": {
+            "prefix": [
+                "qheader"
+            ],
+            "body": [
+                "---",
+                "title: \"$1\"",
+                "format: ",
+                "    html:",
+                "       code-fold: true",
+                "jupyter: $2",
+                "---"
+            ]
+        },
+        "reset kernel": {
+            "prefix": [
+                "kernelreset"
+            ],
+            "body": [
+                "%reset -f"
+            ]
+        }
     }
-}

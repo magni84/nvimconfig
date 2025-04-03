@@ -5,7 +5,7 @@ return {
 		build = ":UpdateRemotePlugins",
 		init = function()
 			-- this is an example, not a default. Please see the readme for more configuration options
-			vim.g.molten_output_win_max_height = 20
+			vim.g.molten_output_win_max_height = 40
 			vim.g.molten_image_provider = "image.nvim"
 		end,
 	},
@@ -18,10 +18,10 @@ return {
 				backend = "kitty", -- Kitty will provide the best experience, but you need a compatible terminal
 				processor = "magick_cli",
 				integrations = {}, -- do whatever you want with image.nvim's integrations
-				max_width = 100, -- tweak to preference
-				max_height = 20, -- ^
-				max_height_window_percentage = math.huge, -- this is necessary for a good experience
-				max_width_window_percentage = math.huge,
+				max_width = nil, -- tweak to preference
+				max_height = nil, -- ^
+				max_height_window_percentage = 90, -- this is necessary for a good experience
+				max_width_window_percentage = 30,
 				window_overlap_clear_enabled = true,
 				window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
 			})
@@ -71,6 +71,9 @@ return {
 				":MoltenEvaluateArgument %reset -f<CR>",
 				{ desc = "reset kernel", silent = true }
 			)
+            vim.keymap.set("n", "<leader>mi", ":MoltenInterupt<CR>", { desc = "MoltenInterupt" })
+            vim.keymap.set("n", "<leader>ms", ":MoltenInit<CR>", { desc = "MoltenInit" })
+            vim.keymap.set("n", "<leader>md", ":MoltenDeinit<CR>", { desc = "MoltenDeinit" })
 			vim.keymap.set("v", "<leader>r", runner.run_range, { desc = "run visual range", silent = true })
 			vim.keymap.set("n", "<leader>RA", function()
 				runner.run_all(true)
@@ -105,13 +108,13 @@ return {
 				insert_code_chunk("python")
 			end
 			wk.add({
-				{ "<C-i>", insert_py_chunk, desc = "python code chunk" },
+				{ "<C-p>", insert_py_chunk, desc = "python code chunk" },
 			}, { mode = "n", silent = true })
 			-- insert mode
 			wk.add({
 				{
 					mode = { "i" },
-					{ "<C-i>", insert_py_chunk, desc = "python code chunk" },
+					{ "<C-p>", insert_py_chunk, desc = "python code chunk" },
 				},
 			}, { mode = "i" })
 		end,

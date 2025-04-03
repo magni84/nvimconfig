@@ -4,6 +4,7 @@ return {
     config = function()
         vim.g.vimtex_fold_enabled = true
         vim.g.vimtex_quickfix_mode = 0
+        vim.g.vimtex_quickfix_ignore = { 'Overfull' }
     end
 }
 
