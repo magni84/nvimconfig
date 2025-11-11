@@ -36,6 +36,7 @@ vim.opt.incsearch = true
 
 -- Other
 vim.opt.spell = true
+vim.opt.spelllang = { "en", "sv" }
 vim.opt.updatetime = 250
 
 -- Highlight while yanking text
