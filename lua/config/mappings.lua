@@ -20,4 +20,6 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-
+-- Change language
+vim.keymap.set("n", "<leader>ls", require('customfunc').langsv, { desc = "Set language to Swedish"})
+vim.keymap.set("n", "<leader>le", require('customfunc').langen, { desc = "Set language to English"})

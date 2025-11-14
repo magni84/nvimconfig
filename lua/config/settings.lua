@@ -28,15 +28,21 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.showtabline = 1
+
 -- Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.inccommand = 'split'
 vim.opt.incsearch = true
 
--- Other
+-- Spelling
 vim.opt.spell = true
 vim.opt.spelllang = { "en", "sv" }
+
+-- Diagnostics
+vim.diagnostic.config({ virtual_text = true })
+
+-- Other
 vim.opt.updatetime = 250
 
 -- Highlight while yanking text
